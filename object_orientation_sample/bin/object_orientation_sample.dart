@@ -9,6 +9,8 @@ import 'package:object_orientation_sample/scope_sample.dart' as scope_sample;
 import 'package:object_orientation_sample/recursive_sample.dart'
     as recursive_sample;
 
+import 'package:object_orientation_sample/class_sample.dart' as class_sample;
+
 void main(List<String> arguments) {
   print('Hello world: ${functions_sample.sample("Hello")}!');
   print('Functions: sampleNamed ${functions_sample.sampleNamed(
@@ -32,4 +34,7 @@ void main(List<String> arguments) {
       'Scope: local, salary ${scope_sample.scope(name: "Anderson", age: 40)}!');
 
   print('Recursive:  ${recursive_sample.sample()}!');
+
+  print(
+      'Class sample:  ${class_sample.buildDevelopers(amountOfDevelopers: 10)}!');
 }
