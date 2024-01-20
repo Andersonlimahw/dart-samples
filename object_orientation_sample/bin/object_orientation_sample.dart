@@ -11,6 +11,12 @@ import 'package:object_orientation_sample/recursive_sample.dart'
 
 import 'package:object_orientation_sample/class_sample.dart' as class_sample;
 
+import 'package:object_orientation_sample/heranca_sample.dart'
+    as heranca_sample;
+
+import 'package:object_orientation_sample/abstract_class_sample.dart'
+    as abstract_class_sample;
+
 void main(List<String> arguments) {
   print('Hello world: ${functions_sample.sample("Hello")}!');
   print('Functions: sampleNamed ${functions_sample.sampleNamed(
@@ -36,5 +42,10 @@ void main(List<String> arguments) {
   print('Recursive:  ${recursive_sample.sample()}!');
 
   print(
-      'Class sample:  ${class_sample.buildDevelopers(amountOfDevelopers: 10)}!');
+      'Class sample:  ${class_sample.buildDevelopers(amountOfDevelopers: 2)}!');
+
+  print(
+      'Class Heranca sample:  ${heranca_sample.buildDevelopersWithVariations(amountOfDevelopers: 2)}!');
+  print(
+      'Abstract class sample:  ${abstract_class_sample.buildProducts(amount: 5)}!');
 }
