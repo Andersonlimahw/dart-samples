@@ -2,13 +2,12 @@ import 'package:sintax_sample/collections.dart';
 import 'package:sintax_sample/dynamic_conceitual.dart';
 import 'package:sintax_sample/enums.dart';
 import 'package:sintax_sample/maps.dart';
-import 'package:sintax_sample/sintax_sample.dart' as sintax_sample;
+
 import 'package:sintax_sample/statics.dart';
 import 'package:sintax_sample/switchs.dart';
+import 'package:sintax_sample/transport/travel.dart';
 
 void main(List<String> arguments) {
-  print('Hello world: ${sintax_sample.calculate()}!');
-
   print('Enums : ${handleScreenPath(EScreens.wallet)}');
   print('Enums : ${handleScreenPath(EScreens.home)}');
   print('Collections : ${collectionSample()}');
@@ -22,4 +21,6 @@ void main(List<String> arguments) {
   print('typesSample ${typesSample()}');
 
   print('staticSample ${staticSample()}');
+  print('Encapsulation sample');
+  travelSample();
 }

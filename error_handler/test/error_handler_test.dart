@@ -1,7 +1,8 @@
+import 'package:error_handler/error_handler.dart';
 import 'package:test/test.dart';
 
 void main() {
   test('calculate', () {
-    expect(42, 42);
+    expect(calculate(), 42);
   });
 }
