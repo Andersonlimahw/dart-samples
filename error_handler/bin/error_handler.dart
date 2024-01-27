@@ -1,5 +1,7 @@
 import 'dart:math';
-import 'Exceptions/Customs/fast_fail_validation.dart';
+import 'helpers/exceptions/controllers/bank_controller_exceptions.dart';
+import 'helpers/exceptions/generics/fast_fail_validation.dart';
+import 'helpers/exceptions/generics/not_found_exceptions.dart';
 import 'controller/bank_controller.dart';
 import 'models/account.dart';
 
@@ -24,30 +26,59 @@ void main() {
       isAuthenticated: true,
     );
 
+    Account senderInvalid = Account(
+      id: returnId(),
+      name: "Anderson Invalid",
+      balance: 20000,
+      isAuthenticated: false,
+    );
+
     var controller = BankController();
 
     controller.addAccount(id: receiver.id, account: receiver);
     controller.addAccount(id: sender.id, account: sender);
+    controller.addAccount(id: senderInvalid.id, account: senderInvalid);
 
     // Sucess case
-    controller.makeTransfer(
+    bool response = controller.makeTransfer(
       senderId: sender.id,
       receiverId: receiver.id,
       amount: 1000,
     );
     controller.getDatabase();
+    print(response);
 
-    // Error case
-    controller.makeTransfer(
+    bool isAuthenticatedAccountExceptionResponse = controller.makeTransfer(
+      senderId: senderInvalid.id,
+      receiverId: senderInvalid.id,
+      amount: 100,
+    );
+    print(isAuthenticatedAccountExceptionResponse);
+    // fastFailValidationException case
+    bool fastFailValidationException = controller.makeTransfer(
+      senderId: sender.id,
+      receiverId: sender.id,
+      amount: 99999999,
+    );
+    print(fastFailValidationException);
+
+    // NotFoundCustomException case
+    bool notFoundCustomException = controller.makeTransfer(
       senderId: 'invalid_id',
       receiverId: 'invalid_receiver_id',
       amount: 0,
     );
+    print(notFoundCustomException);
 
     controller.getDatabase();
   } on FastFailValidationException catch (ex, trace) {
     print(
         'FastFailValidationException: $ex message: ${ex.message} trace $trace');
+  } on NotFoundCustomException catch (ex, trace) {
+    print('NotFoundCustomException: $ex message: ${ex.message}, trace $trace');
+  } on IsAuthenticatedAccountException catch (ex, trace) {
+    print(
+        'IsAuthenticatedAccountException: account: ${ex.accountId} ${ex.message}  trace $trace');
   } catch (e, s) {
     print('Exception details:\n $e');
     print('Stack trace:\n $s');

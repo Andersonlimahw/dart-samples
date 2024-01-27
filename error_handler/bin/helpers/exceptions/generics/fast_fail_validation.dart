@@ -1,4 +1,4 @@
-class FastFailValidationException {
+class FastFailValidationException implements Exception {
   FastFailValidationException({
     required this.property,
     required this.message,

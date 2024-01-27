@@ -1,4 +1,6 @@
-import '../Exceptions/Customs/fast_fail_validation.dart';
+import '../helpers/exceptions/controllers/bank_controller_exceptions.dart';
+import '../helpers/exceptions/generics/fast_fail_validation.dart';
+import '../helpers/exceptions/generics/not_found_exceptions.dart';
 import '../models/account.dart';
 
 class BankController {
@@ -15,9 +17,10 @@ class BankController {
   }) {
     // Verificar se ID de remetente é válido
     if (!verifyId(senderId)) {
-      throw FastFailValidationException(
+      throw NotFoundCustomException(
         property: 'senderId',
         message: 'Remetente não encontrado com o id $senderId',
+        code: 404,
       );
     }
 
@@ -34,10 +37,7 @@ class BankController {
 
     // Verificar se o remetente está autenticado
     if (!accountSender.isAuthenticated) {
-      throw FastFailValidationException(
-        property: 'accountSender.isAuthenticated',
-        message: 'Conta não autenticada $accountSender',
-      );
+      throw IsAuthenticatedAccountException(accountId: accountSender.id);
     }
 
     // Verificar se o remetente possui saldo suficiente
