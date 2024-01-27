@@ -1,5 +1,3 @@
-import 'dart:math';
-
 class Account {
   String id;
   String name;
@@ -15,5 +13,13 @@ class Account {
 
   editBalance({required value}) {
     balance = balance + value;
+  }
+
+  @override
+  String toString() {
+    String message =
+        'Account => Id: $id name: $name, balance: $balance, isAuthenticated: $isAuthenticated';
+    print(message);
+    return message;
   }
 }

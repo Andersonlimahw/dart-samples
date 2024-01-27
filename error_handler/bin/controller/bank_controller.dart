@@ -1,3 +1,4 @@
+import '../Exceptions/Customs/fast_fail_validation.dart';
 import '../models/account.dart';
 
 class BankController {
@@ -14,12 +15,18 @@ class BankController {
   }) {
     // Verificar se ID de remetente é válido
     if (!verifyId(senderId)) {
-      return false;
+      throw FastFailValidationException(
+        property: 'senderId',
+        message: 'Remetente não encontrado com o id $senderId',
+      );
     }
 
     // Verificar se ID de destinatário é válido
     if (!verifyId(receiverId)) {
-      return false;
+      throw FastFailValidationException(
+        property: 'receiverId',
+        message: 'Destinatário não encontrado com o id $receiverId',
+      );
     }
 
     Account accountSender = _database[senderId]!;
@@ -27,12 +34,18 @@ class BankController {
 
     // Verificar se o remetente está autenticado
     if (!accountSender.isAuthenticated) {
-      return false;
+      throw FastFailValidationException(
+        property: 'accountSender.isAuthenticated',
+        message: 'Conta não autenticada $accountSender',
+      );
     }
 
     // Verificar se o remetente possui saldo suficiente
     if (accountSender.balance < amount) {
-      return false;
+      throw FastFailValidationException(
+        property: 'accountSender.isAuthenticated',
+        message: 'Remetente não possui saldo suficiente $accountSender',
+      );
     }
 
     // Se tudo estiver certo, efetivar transação
@@ -44,5 +57,10 @@ class BankController {
 
   bool verifyId(String id) {
     return _database.containsKey(id);
+  }
+
+  Map<String, Account> getDatabase() {
+    print('_database => $_database');
+    return _database;
   }
 }
