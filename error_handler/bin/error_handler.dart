@@ -5,13 +5,34 @@ import 'helpers/exceptions/generics/not_found_exceptions.dart';
 import 'controller/bank_controller.dart';
 import 'models/account.dart';
 
+String returnId() {
+  Random randomId = Random(100);
+  return '${randomId.hashCode}';
+}
+
+void validateNullSafety() {
+  Account? nullableAccount;
+  Random random = Random();
+  int randomNumber = random.nextInt(10);
+
+  if (randomNumber <= 5) {
+    nullableAccount = Account(
+      id: returnId(),
+      name: 'Lemon',
+      balance: 10000,
+      isAuthenticated: true,
+    );
+  }
+  print('validateNullSafety samples');
+  print(nullableAccount);
+  print(nullableAccount.runtimeType); // Null or Account
+  print(nullableAccount != null
+      ? 'balance: ${nullableAccount.balance}'
+      : 'Conta nula.');
+}
+
 void main() {
   try {
-    String returnId() {
-      Random randomId = Random(100);
-      return '${randomId.hashCode}';
-    }
-
     Account receiver = Account(
       id: returnId(),
       name: "Lemon",
@@ -38,6 +59,8 @@ void main() {
     controller.addAccount(id: receiver.id, account: receiver);
     controller.addAccount(id: sender.id, account: sender);
     controller.addAccount(id: senderInvalid.id, account: senderInvalid);
+
+    validateNullSafety();
 
     // Sucess case
     bool response = controller.makeTransfer(
