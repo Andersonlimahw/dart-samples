@@ -20,7 +20,6 @@ class BankController {
       throw NotFoundCustomException(
         property: 'senderId',
         message: 'Remetente não encontrado com o id $senderId',
-        code: 404,
       );
     }
 
@@ -43,8 +42,9 @@ class BankController {
     // Verificar se o remetente possui saldo suficiente
     if (accountSender.balance < amount) {
       throw FastFailValidationException(
-        property: 'accountSender.isAuthenticated',
-        message: 'Remetente não possui saldo suficiente $accountSender',
+        property: 'accountSender.balance',
+        message:
+            'Remetente não possui saldo suficiente $accountSender, valor: $amount',
       );
     }
 

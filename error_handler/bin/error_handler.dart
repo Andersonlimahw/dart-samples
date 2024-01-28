@@ -48,12 +48,12 @@ void main() {
     controller.getDatabase();
     print(response);
 
-    bool isAuthenticatedAccountExceptionResponse = controller.makeTransfer(
-      senderId: senderInvalid.id,
-      receiverId: senderInvalid.id,
-      amount: 100,
-    );
-    print(isAuthenticatedAccountExceptionResponse);
+    // bool isAuthenticatedAccountExceptionResponse = controller.makeTransfer(
+    //   senderId: senderInvalid.id,
+    //   receiverId: senderInvalid.id,
+    //   amount: 100,
+    // );
+    // print(isAuthenticatedAccountExceptionResponse);
     // fastFailValidationException case
     bool fastFailValidationException = controller.makeTransfer(
       senderId: sender.id,
@@ -69,19 +69,19 @@ void main() {
       amount: 0,
     );
     print(notFoundCustomException);
-
     controller.getDatabase();
   } on FastFailValidationException catch (ex, trace) {
-    print(
-        'FastFailValidationException: $ex message: ${ex.message} trace $trace');
+    print(ex);
+    print(trace);
   } on NotFoundCustomException catch (ex, trace) {
-    print('NotFoundCustomException: $ex message: ${ex.message}, trace $trace');
+    print(ex);
+    print(trace);
   } on IsAuthenticatedAccountException catch (ex, trace) {
-    print(
-        'IsAuthenticatedAccountException: account: ${ex.accountId} ${ex.message}  trace $trace');
-  } catch (e, s) {
-    print('Exception details:\n $e');
-    print('Stack trace:\n $s');
+    print(ex);
+    print(trace);
+  } catch (ex, trace) {
+    print('Exception details:\n $ex');
+    print('Stack trace:\n $trace');
   } finally {
     print('Finally');
   }
