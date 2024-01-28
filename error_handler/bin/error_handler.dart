@@ -21,6 +21,7 @@ void validateNullSafety() {
       name: 'Lemon',
       balance: 10000,
       isAuthenticated: true,
+      createdAt: DateTime.now(),
     );
   }
   print('validateNullSafety samples');
