@@ -3,12 +3,14 @@ class Account {
   String name;
   double balance;
   bool isAuthenticated;
+  DateTime? createdAt;
 
   Account({
     required this.id,
     required this.name,
     required this.balance,
     required this.isAuthenticated,
+    this.createdAt,
   })  : assert(name.trim().isNotEmpty, 'Nome não pode ser uma string vazia'),
         assert(balance > 0, 'Balance deve ser maior do que zero'),
         assert(id.isNotEmpty, 'Id é obrigatório');
