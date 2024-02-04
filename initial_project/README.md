@@ -31,11 +31,20 @@ cd /lib
 dart run initial_project.dart
 ```
 
+Or select a project at
+![Alt text](../docs/images/dart_run_sample.png)
+
 ## Run tests
 
 ```sh
 dart test
 ```
+
+
+## Doc:
+
+Read the doc at this link
+[Docs](../docs/learningpath_dart_docs/[Mobile]%20Dart%200f08d9bbf00140b18700e4cca658f2fe.md)
 
 ## Author
 
@@ -45,3 +54,7 @@ dart test
 * Twitter: [@andersonlimahw](https://twitter.com/andersonlimahw)
 * Github: [@andersonlimahw](https://github.com/andersonlimahw)
 * LinkedIn: [@andersonlimahw](https://linkedin.com/in/andersonlimahw)
+## Original content:
+
+[@alura](https://www.alura.com.br/)
+[Learning path dart](https://cursos.alura.com.br/formacao-dart)
