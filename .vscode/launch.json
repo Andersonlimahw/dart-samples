@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "error_handler",
+            "cwd": "error_handler",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "initial_project",
+            "cwd": "initial_project",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "lemon_bot",
+            "cwd": "lemon_bot",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "object_orientation_sample",
+            "cwd": "object_orientation_sample",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sintax_sample",
+            "cwd": "sintax_sample",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}
