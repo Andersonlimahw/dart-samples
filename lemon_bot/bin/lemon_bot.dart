@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'questions/good_manners.dart';
 import 'questions/time_questions.dart';
 import 'timing/waiting_time.dart';
 
@@ -13,9 +14,9 @@ void main() async {
 
   var customStream = BotClock().lemonStream(1, 10);
   var subscriber = customStream.listen((event) {
-    print('Stream is running to $event');
+    print('Stream está executando para o $event');
   }, onDone: () {
-    print('Stream is done!');
+    print('Stream finalizado!');
     shouldRun = false;
   });
   print(subscriber);
@@ -35,8 +36,8 @@ void main() async {
       // verificar antes, assim não fazemos toda a função sem precisar.
       TimeQuestions(usuario).timeQuestion();
       await BotClock().clock(timeInSeconds: 2);
-    } else if (false) {
-      //Basta adicionar novas perguntas aqui!
+    } else if (GoodManners(question: usuario).handleIsThisGoodManners()) {
+      GoodManners(question: usuario).goodManners();
     } else {
       await BotClock().clock(timeInSeconds: 2);
       print(lemonBot +

@@ -8,7 +8,7 @@ class BotClock {
     int index = 1;
     while (index < maxCount) {
       print(
-          'Counting: $index, interval: $intervalIsSeconds, maxCount: $maxCount');
+          'Contador: $index, intervalo em segundos: $intervalIsSeconds, limite de tempo: $maxCount segundos');
       await Future.delayed(Duration(seconds: intervalIsSeconds));
       yield index++; // Yield significa captura.
     }
